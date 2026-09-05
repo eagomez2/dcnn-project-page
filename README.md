@@ -14,7 +14,7 @@ We demonstrate the effectiveness of our method through three case studies, inclu
 [[Project page](https://eagomez2.github.io/dcnn-project-page/)] [[Preprint](https://arxiv.org/abs/2601.13704)]
 
 ## License
-For further details about the license of this tool, please see [LICENSE](LICENSE).
+For further details about the license of this repository, please see [LICENSE](LICENSE).
 
 ## Acknowledgement
 The calculations presented in this publication were carried out using the computer resources of the Aalto University of Science "Science-IT" project.
