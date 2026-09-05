@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project page - Performance and Complexity Trade-off Optimization of Speech Models During Training</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<style>
+html {
+    scroll-behavior: smooth;
+  }
+
+h3 {
+    margin-top: 25px;
+}
+
+.text-justify {
+    text-align: justify;
+}
+
+.btn-xs {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1;
+    border-radius: 0.25rem;
+    background-color: #333;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+  }
+
+.btn-xs:hover {
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+}
+
+.audio-caption {
+    font-size: 0.9rem;
+}
+
+.figure-section {
+    margin-bottom: 3rem;
+}
+</style>
+<body>
+    <div class="container">
+        <h3 id="toc" class="text-center">Performance and Complexity Trade-off Optimization of Speech Models During Training</h3>
+        <p class="text-center">Esteban Gómez and Tom Bäckström</p>
+        <p class="text-center fst-italic">
+            Department of Information and Communications Engineering, Aalto University, Espoo, Finland<br>
+        </p>
+        <p class="text-center font-monospace">{esteban.gomezmellado, tom.backstrom}@aalto.fi</p>
+        <p class="text-center">
+            <img src="img/main-diagram.svg" class="img-fluid" alt="main-diagram">
+        </p>
+        <div class="text-center my-4">
+            <div class="d-flex justify-content-center flex-wrap gap-3">
+              <a href="#" class="btn btn-md btn-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="URL will be provided upon publication" aria-label="Paper link not ready">
+                📄 Paper
+              </a>
+              <a href="https://arxiv.org/abs/2601.13704" target="_blank" rel="noopener noreferrer" class="btn btn-md" style="background-color: #1A1917; color: #fff;" aria-label="Preprint on arXiv">
+                📝 Preprint
+              </a>
+              <a href="#" class="btn btn-md btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="URL will be provided upon publication" aria-label="Code link not ready">
+                💻 Code
+              </a>
+            </div>
+          </div>
+        <p class="text-center text-muted fst-italic" style="font-size: 0.85rem;">This work has been submitted to the IEEE for possible publication.</p>
+        <h3>Abstract</h3>
+        <p class="text-justify">
+            In speech machine learning, neural network models are typically designed by choosing an architecture with fixed layer sizes and structure. These models are then trained to maximize performance on metrics aligned with the task's objective. While the overall architecture is usually guided by prior knowledge of the task, the sizes of individual layers are often chosen heuristically.
+        </p>
+        <p class="text-justify">
+            However, this approach does not guarantee an optimal trade-off between performance and computational complexity; consequently, post hoc methods such as weight quantization or model pruning are typically employed to reduce computational cost. This occurs because stochastic gradient descent (SGD) methods can only optimize differentiable functions, while factors influencing computational complexity, such as layer sizes and floating-point operations per second (FLOP/s), are non-differentiable and require modifying the model structure during training.
+        </p>
+        <p class="text-justify">
+            We propose a reparameterization technique based on feature noise injection that enables joint optimization of performance and computational complexity during training using SGD-based methods. Unlike traditional pruning methods, our approach allows the model size to be dynamically optimized for a target performance-complexity trade-off, without relying on heuristic criteria to select which weights or structures to remove.
+        </p>
+        <p class="text-justify">
+            We demonstrate the effectiveness of our method through three case studies, including a synthetic example and two practical real-world applications: voice activity detection and audio anti-spoofing. The code related to our work is publicly available to encourage further research.
+        </p>
+        <p>
+            <span class="badge text-bg-info">Speech machine learning</span>
+            <span class="badge text-bg-info">Low-complexity</span>
+            <span class="badge text-bg-info">Voice activity detection</span>
+            <span class="badge text-bg-info">Deep fake detection</span>
+        </p>
+        <h3 id="data">Data availability <a href="#toc" class="btn btn-xs btn-outline-dark ms-2">Top ↑</a></h3>
+        <p class="text-justify">
+            The numeric data underlying the figures reported in the paper is made available as tabular data (e.g., CSV) for the community, so it can be reused as a reference point for further research. Only figures based on numeric measurements are listed below; illustrative or conceptual figures are not included. Click a figure number below to view it alongside its associated data table, and use the download button to obtain the corresponding CSV file.
+        </p>
+
+        <!-- ==================== Figure 6 ==================== -->
+        <div class="figure-section">
+        <p>
+            <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#figure6-container" aria-expanded="true" aria-controls="figure6-container">
+                📊 Show / hide Fig. 6
+            </button>
+            <a href="data/figure_6.csv" download class="btn btn-success btn-sm">
+                ⬇️ Download CSV
+            </a>
+        </p>
+        <div class="collapse show" id="figure6-container">
+            <div class="card card-body">
+                <ul class="nav nav-tabs" id="figure6-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="figure6-image-tab" data-bs-toggle="tab" data-bs-target="#figure6-image-pane" type="button" role="tab" aria-controls="figure6-image-pane" aria-selected="true">
+                            📷 Figure
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="figure6-data-tab" data-bs-toggle="tab" data-bs-target="#figure6-data-pane" type="button" role="tab" aria-controls="figure6-data-pane" aria-selected="false">
+                            🗂️ Data table
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content pt-3" id="figure6-tab-content">
+                    <div class="tab-pane fade show active" id="figure6-image-pane" role="tabpanel" aria-labelledby="figure6-image-tab">
+                        <figure class="mb-0">
+                            <img src="data/figure_6.svg" class="img-fluid" alt="Comparison of VAD models complexity, performance and filter bank size in VCTK+ESC-50 evaluation set">
+                            <figcaption class="text-justify mt-2" style="font-size: 0.85rem;">
+                                <strong>Fig. 6.</strong> Comparison of VAD models in terms of complexity, performance, and filter bank size, evaluated on the VCTK+ESC-50 set. (a) CRNNVAD baseline, DynCRNNVAD models (DCRNNVAD), and SGCRNNVAD (SCRNNVAD). (b) TrVAD baseline, DynTrVAD models (DTrVAD), and SGTrVAD (STrVAD). The x-axis shows FLOP/s, and the y-axis indicates EER (pooled). Numbers next to model markers denote filter bank bands. Numerical suffixes in DCRNNVAD and DTrVAD model names indicate the lower bound of κ, and for SCRNNVAD and STrVAD indicate the complexity budget interval.
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="tab-pane fade" id="figure6-data-pane" role="tabpanel" aria-labelledby="figure6-data-tab">
+                        <p class="fst-italic text-muted" style="font-size: 0.85rem;">
+                            Data for Fig. 6 (Comparison of VAD models complexity, performance and filter bank size in VCTK+ESC-50 evaluation set). "-" denotes fields not applicable to a given model (baselines).
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover table-bordered table-sm align-middle">
+                                <thead class="table-dark">
+                                    <tr id="figure6-thead-row"></tr>
+                                </thead>
+                                <tbody id="figure6-tbody">
+                                    <tr><td class="text-muted fst-italic">Loading table…</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- ==================== Figure 7 ==================== -->
+        <div class="figure-section">
+        <p>
+            <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#figure7-container" aria-expanded="true" aria-controls="figure7-container">
+                📊 Show / hide Fig. 7
+            </button>
+            <a href="data/figure_7.csv" download class="btn btn-success btn-sm">
+                ⬇️ Download CSV
+            </a>
+        </p>
+        <div class="collapse show" id="figure7-container">
+            <div class="card card-body">
+                <ul class="nav nav-tabs" id="figure7-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="figure7-image-tab" data-bs-toggle="tab" data-bs-target="#figure7-image-pane" type="button" role="tab" aria-controls="figure7-image-pane" aria-selected="true">
+                            📷 Figure
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="figure7-data-tab" data-bs-toggle="tab" data-bs-target="#figure7-data-pane" type="button" role="tab" aria-controls="figure7-data-pane" aria-selected="false">
+                            🗂️ Data table
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content pt-3" id="figure7-tab-content">
+                    <div class="tab-pane fade show active" id="figure7-image-pane" role="tabpanel" aria-labelledby="figure7-image-tab">
+                        <figure class="mb-0">
+                            <img src="data/figure_7.svg" class="img-fluid" alt="Performance of VAD models by SNR in VCTK+ESC-50 evaluation set">
+                            <figcaption class="text-justify mt-2" style="font-size: 0.85rem;">
+                                <strong>Fig. 7.</strong> Performance of VAD models by SNR range in VCTK+ESC-50 set. (a) CRNNVAD baseline, DynCRNNVAD models (DCRNNVAD), and SGCRNNVAD models (SCRNNVAD). (b) TrVAD baseline, DynTrVAD models (DTrVAD), and SGTrVAD models (STrVAD). The x-axis shows SNR ranges, and the y-axis shows EER within each range. Numerical suffixes in DCRNNVAD and DTrVAD indicate the lower bound of κ, while suffixes in SCRNNVAD and STrVAD indicate the complexity budget interval.
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="tab-pane fade" id="figure7-data-pane" role="tabpanel" aria-labelledby="figure7-data-tab">
+                        <p class="fst-italic text-muted" style="font-size: 0.85rem;">
+                            Data for Fig. 7 (Performance of VAD models by SNR in VCTK+ESC-50 evaluation set).
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover table-bordered table-sm align-middle">
+                                <thead class="table-dark">
+                                    <tr id="figure7-thead-row"></tr>
+                                </thead>
+                                <tbody id="figure7-tbody">
+                                    <tr><td class="text-muted fst-italic">Loading table…</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <!-- ==================== Figure 9 ==================== -->
+        <div class="figure-section">
+        <p>
+            <button class="btn btn-secondary btn-sm" type="button" data-bs-toggle="collapse" data-bs-target="#figure9-container" aria-expanded="true" aria-controls="figure9-container">
+                📊 Show / hide Fig. 9
+            </button>
+            <a href="data/figure_9.csv" download class="btn btn-success btn-sm">
+                ⬇️ Download CSV
+            </a>
+        </p>
+        <div class="collapse show" id="figure9-container">
+            <div class="card card-body">
+                <ul class="nav nav-tabs" id="figure9-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="figure9-image-tab" data-bs-toggle="tab" data-bs-target="#figure9-image-pane" type="button" role="tab" aria-controls="figure9-image-pane" aria-selected="true">
+                            📷 Figure
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="figure9-data-tab" data-bs-toggle="tab" data-bs-target="#figure9-data-pane" type="button" role="tab" aria-controls="figure9-data-pane" aria-selected="false">
+                            🗂️ Data table
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content pt-3" id="figure9-tab-content">
+                    <div class="tab-pane fade show active" id="figure9-image-pane" role="tabpanel" aria-labelledby="figure9-image-tab">
+                        <figure class="mb-0">
+                            <img src="data/figure_9.svg" class="img-fluid" alt="Comparison of anti-spoofing models complexity, performance and size in ASVspoof19 LA evaluation set">
+                            <figcaption class="text-justify mt-2" style="font-size: 0.85rem;">
+                                <strong>Fig. 9.</strong> Comparison of complexity, model size, and performance of DynResNet34 (DRN34) models against our baseline ResNet34 (RN34). The x-axis shows the complexity in FLOP/s, while the y-axis represents the Equal Error Rate on the ASVspoof19 LA evaluation set as a percentage. The number adjacent to each figure specifies the model's parameter count in millions. A number or letter following the "B" denotes which residual block stack's complexity was optimized during training, with "X" meaning all of them. The final number indicates the minimum complexity constraint during training, corresponding to the lower bound of κ. The top ten ASVspoof19 team submissions (with unreported complexity) and baselines, B01 and B02, appear on the secondary y-axis.
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="tab-pane fade" id="figure9-data-pane" role="tabpanel" aria-labelledby="figure9-data-tab">
+                        <p class="fst-italic text-muted" style="font-size: 0.85rem;">
+                            Data for Fig. 9 (Comparison of anti-spoofing models complexity, performance and size in ASVSpoof19 LA evaluation set). "N/A" denotes fields not applicable to a given model and "Not reported" denotes values not included in the challenge results.
+                        </p>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover table-bordered table-sm align-middle">
+                                <thead class="table-dark">
+                                    <tr id="figure9-thead-row"></tr>
+                                </thead>
+                                <tbody id="figure9-tbody">
+                                    <tr><td class="text-muted fst-italic">Loading table…</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <h3 id="acknowledgment">Acknowledgment <a href="#toc" class="btn btn-xs btn-outline-dark ms-2">Top ↑</a></h3>
+        <p class="text-justify">The calculations presented in this publication were carried out using the computer resources of the Aalto University of Science “Science-IT” project.</p>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script>
+        // Enable all tooltips, with click for mobile-friendly interaction
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+          return new bootstrap.Tooltip(tooltipTriggerEl, {
+            trigger: 'click hover'  // Makes it work on both hover and click
+          });
+        });
+
+        // Minimal CSV parser that handles quoted fields containing commas
+        function parseCSV(text) {
+            const rows = [];
+            let row = [], field = '', inQuotes = false;
+            for (let i = 0; i < text.length; i++) {
+                const c = text[i];
+                if (inQuotes) {
+                    if (c === '"' && text[i + 1] === '"') { field += '"'; i++; }
+                    else if (c === '"') { inQuotes = false; }
+                    else { field += c; }
+                } else {
+                    if (c === '"') { inQuotes = true; }
+                    else if (c === ',') { row.push(field); field = ''; }
+                    else if (c === '\n' || c === '\r') {
+                        if (c === '\r' && text[i + 1] === '\n') i++;
+                        row.push(field); field = '';
+                        if (row.length > 1 || row[0] !== '') rows.push(row);
+                        row = [];
+                    } else { field += c; }
+                }
+            }
+            if (field !== '' || row.length) { row.push(field); rows.push(row); }
+            return rows;
+        }
+
+        // Generic loader: fetches a CSV and renders it into the given thead/tbody
+        function loadFigureTable(csvUrl, columnLabels, theadId, tbodyId) {
+            fetch(csvUrl)
+                .then(res => {
+                    if (!res.ok) throw new Error('CSV not found');
+                    return res.text();
+                })
+                .then(text => {
+                    const rows = parseCSV(text.trim());
+                    const header = rows[0];
+                    const dataRows = rows.slice(1);
+
+                    const theadRow = document.getElementById(theadId);
+                    theadRow.innerHTML = header.map(h => `<th scope="col">${columnLabels[h] || h}</th>`).join('');
+
+                    const tbody = document.getElementById(tbodyId);
+                    tbody.innerHTML = dataRows.map(r =>
+                        '<tr>' + r.map(v => `<td>${v}</td>`).join('') + '</tr>'
+                    ).join('');
+                })
+                .catch(err => {
+                    document.getElementById(tbodyId).innerHTML =
+                        '<tr><td class="text-danger">Could not load table data. Please use the download link above.</td></tr>';
+                    console.error(err);
+                });
+        }
+
+        // Fetch and render Fig. 6 CSV data into the table
+        const figure6ColumnLabels = {
+            subplot: 'Subplot',
+            model: 'Model',
+            min_kappa: 'κ<sub>min</sub>',
+            mel_bands: 'Mel bands',
+            params: 'Params',
+            mflops: 'FLOP/s (M)',
+            eer_percent: 'EER (%)'
+        };
+        loadFigureTable('data/figure_6.csv', figure6ColumnLabels, 'figure6-thead-row', 'figure6-tbody');
+
+        // Fetch and render Fig. 7 CSV data into the table
+        const figure7ColumnLabels = {
+            subplot: 'Subplot',
+            model: 'Model',
+            snr_range: 'SNR range',
+            eer_percent: 'EER (%)'
+        };
+        loadFigureTable('data/figure_7.csv', figure7ColumnLabels, 'figure7-thead-row', 'figure7-tbody');
+
+        // Fetch and render Fig. 9 CSV data into the table
+        const figure9ColumnLabels = {
+            model: 'Model',
+            dynamic_resblock: 'Dynamic ResBlock',
+            min_kappa: 'κ<sub>min</sub>',
+            params: 'Params (M)',
+            gflops: 'FLOP/s (G)',
+            eer_percent: 'EER (%)'
+        };
+        loadFigureTable('data/figure_9.csv', figure9ColumnLabels, 'figure9-thead-row', 'figure9-tbody');
+      </script>
+    </div>
+</body>
+</html>
